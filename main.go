@@ -11,8 +11,8 @@ import (
 
 	"github.com/codegangsta/cli"
 
+	"github.com/OceanCodes/gotty/backend/localcommand"
 	"github.com/OceanCodes/gotty/server"
-	"github.com/yudai/gotty/backend/localcommand"
 	"github.com/yudai/gotty/pkg/homedir"
 	"github.com/yudai/gotty/utils"
 )
@@ -48,7 +48,6 @@ func main() {
 			EnvVar: "GOTTY_CONFIG",
 		},
 	)
-
 	app.Action = func(c *cli.Context) {
 		if len(c.Args()) == 0 {
 			msg := "Error: No command given."

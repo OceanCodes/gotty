@@ -58,10 +58,8 @@
 [[projects]]
   name = "github.com/yudai/gotty"
   packages = [
-    "backend/localcommand",
     "pkg/homedir",
     "pkg/randomstring",
-    "server",
     "utils",
     "webtty"
   ]
@@ -81,6 +79,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "851eab632a03d4f9356de090bea231822f74a4a5d0c83058ee3db240ad8d38fa"
+  inputs-digest = "1750bd734ed60a49cbc242f29efdc07cb65e1b55ddc6af0c6d1fc73689da0012"
   solver-name = "gps-cdcl"
   solver-version = 1
