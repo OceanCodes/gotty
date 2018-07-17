@@ -1,0 +1,37 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: codeocean/build-golang:1.10
+
+    working_directory: /go/src/github.com/OceanCodes/gotty
+
+    steps:
+      - checkout
+
+      - run:
+          name: create the 'vendor' folder
+          command: dep ensure
+
+      - run:
+          name: build gotty
+          command: CGO_ENABLED=0 go build
+
+      #- run:
+      #    name: generate checksum
+      #    command: sha256sum * > ./SHA256SUMS
+
+      - store_artifacts:
+                path: /go/src/github.com/OceanCodes/gotty/gotty
+                destination: gotty-bin
+
+      - run:
+        name: release
+        command: |
+         if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            go get github.com/tcnksm/ghr
+            ghr -t ${CIRCLE_TOKEN} ${CIRCLE_BUILD_NUM} gotty
+         fi
+
+
