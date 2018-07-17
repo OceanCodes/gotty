@@ -11,27 +11,23 @@ jobs:
       - checkout
 
       - run:
-          name: create the 'vendor' folder
-          command: dep ensure
-
-      - run:
           name: build gotty
-          command: CGO_ENABLED=0 go build
-
-      #- run:
-      #    name: generate checksum
-      #    command: sha256sum * > ./SHA256SUMS
+          command: |
+           mkdir -p out
+           dep ensure
+           CGO_ENABLED=0 go build -o out/gotty -ldflags "-X main.Version=${CIRCLE_BUILD_NUM} -X main.CommitID=${CIRCLE_SHA1}" && \
+           sha256sum out/gotty > out/SHA256SUM
 
       - store_artifacts:
-                path: /go/src/github.com/OceanCodes/gotty/gotty
-                destination: gotty-bin
+          path: /go/src/github.com/OceanCodes/gotty/out
+          destination: bin
 
       - run:
-        name: release
-        command: |
-         if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            go get github.com/tcnksm/ghr
-            ghr -t ${CIRCLE_TOKEN} ${CIRCLE_BUILD_NUM} gotty
-         fi
+          name: release
+          command: |
+           if [ "${CIRCLE_BRANCH}" == "master" ]; then
+             go get github.com/tcnksm/ghr
+             ghr -t "${CIRCLE_TOKEN}" "${CIRCLE_BUILD_NUM}" out/
+           fi
 
 
