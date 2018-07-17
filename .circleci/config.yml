@@ -27,7 +27,7 @@ jobs:
           command: |
            if [ "${CIRCLE_BRANCH}" == "master" ]; then
              go get github.com/tcnksm/ghr
-             ghr -t "${CIRCLE_TOKEN}" "${CIRCLE_BUILD_NUM}" out/
+             ghr "${CIRCLE_BUILD_NUM}" out/
            fi
 
 
