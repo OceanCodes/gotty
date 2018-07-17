@@ -15,7 +15,7 @@ jobs:
           command: |
            mkdir -p out
            dep ensure
-           CGO_ENABLED=0 go build -o out/gotty -ldflags "-X main.Version=${CIRCLE_BUILD_NUM} -X main.CommitID=${CIRCLE_SHA1}" && \
+           CGO_ENABLED=0 go build -o out/gotty -ldflags "-X main.Version=CodeOcean-${CIRCLE_BUILD_NUM} -X main.CommitID=${CIRCLE_SHA1}" && \
            sha256sum out/gotty > out/SHA256SUM
 
       - store_artifacts:
