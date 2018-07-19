@@ -15,7 +15,8 @@ jobs:
           command: |
            mkdir -p out
            dep ensure
-           CGO_ENABLED=0 go build -o out/gotty -ldflags "-X main.Version=CodeOcean-${CIRCLE_BUILD_NUM} -X main.CommitID=${CIRCLE_SHA1}" && \
+           export TAG=$(./make-tag.sh)
+           CGO_ENABLED=0 go build -o out/gotty -ldflags "-X main.Version=${TAG}" && \
            sha256sum out/gotty > out/SHA256SUM
 
       - store_artifacts:
@@ -27,7 +28,8 @@ jobs:
           command: |
            if [ "${CIRCLE_BRANCH}" == "master" ]; then
              go get github.com/tcnksm/ghr
-             ghr "${CIRCLE_BUILD_NUM}" out/
+             export TAG=$(./make-tag.sh)
+             ghr "${TAG}" out/
            fi
 
 
