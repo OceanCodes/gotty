@@ -98,8 +98,8 @@ func (server *Server) Run(ctx context.Context, options ...RunOption) error {
 	path := "/"
 	if server.options.EnableRandomUrl {
 		path = "/" + randomstring.Generate(server.options.RandomUrlLength) + "/"
-	} else if server.options.CustomURL != "" {
-		path = "/" + server.options.CustomURL + "/"
+	} else if server.options.Path != "" {
+		path = "/" + server.options.Path + "/"
 	}
 
 	handlers := server.setupHandlers(cctx, cancel, path, counter)
