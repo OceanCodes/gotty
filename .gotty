@@ -14,8 +14,8 @@
 //          To enable basic authentication, set `true` to `enable_basic_auth`
 // credential = "user:pass"
 
-// [string] add custom URL
-// custom_url = ""
+// [string] add custom path
+// path = ""
 
 // [bool] Enable random URL generation
 // enable_random_url = false
