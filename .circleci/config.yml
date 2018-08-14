@@ -1,0 +1,37 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: codeocean/build-golang:1.10
+
+    working_directory: /go/src/github.com/OceanCodes/gotty
+
+    steps:
+      - checkout
+
+      - run:
+          name: build gotty
+          command: |
+            mkdir -p out
+            dep ensure
+            export TAG=$(./make-tag.sh)
+            CGO_ENABLED=0 go build -o out/gotty -ldflags "-X main.Version=${TAG}" && \
+            sha256sum out/gotty > out/SHA256SUM
+
+      - store_artifacts:
+          path: /go/src/github.com/OceanCodes/gotty/out
+          destination: bin
+
+      - run:
+          name: release
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                go get github.com/tcnksm/ghr
+                export TAG=$(./make-tag.sh)
+                ghr "${TAG}" out/
+            fi
+
+
+
+

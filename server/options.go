@@ -10,6 +10,7 @@ type Options struct {
 	PermitWrite         bool             `hcl:"permit_write" flagName:"permit-write" flagSName:"w" flagDescribe:"Permit clients to write to the TTY (BE CAREFUL)" default:"false"`
 	EnableBasicAuth     bool             `hcl:"enable_basic_auth" default:"false"`
 	Credential          string           `hcl:"credential" flagName:"credential" flagSName:"c" flagDescribe:"Credential for Basic Authentication (ex: user:pass, default disabled)" default:""`
+	Path                string           `hcl:"path" flagName:"path" flagSName:"u" flagDescribe:"Add custom string to the URL" default:""`
 	EnableRandomUrl     bool             `hcl:"enable_random_url" flagName:"random-url" flagSName:"r" flagDescribe:"Add a random string to the URL" default:"false"`
 	RandomUrlLength     int              `hcl:"random_url_length" flagName:"random-url-length" flagDescribe:"Random URL length" default:"8"`
 	EnableTLS           bool             `hcl:"enable_tls" flagName:"tls" flagSName:"t" flagDescribe:"Enable TLS/SSL" default:"false"`
@@ -30,6 +31,7 @@ type Options struct {
 	Height              int              `hcl:"height" flagName:"height" flagDescribe:"Static height of the screen, 0(default) means dynamically resize" default:"0"`
 	WSOrigin            string           `hcl:"ws_origin" flagName:"ws-origin" flagDescribe:"A regular expression that matches origin URLs to be accepted by WebSocket. No cross origin requests are acceptable by default" default:""`
 	Term                string           `hcl:"term" flagName:"term" flagDescribe:"Terminal name to use on the browser, one of xterm or hterm." default:"xterm"`
+	LogRequests         bool             `hcl:"logRequests" flagName:"logRequests" flagSName:"l" flagDescribe:"Enable request logging" default:"false"`
 
 	TitleVariables map[string]interface{}
 }

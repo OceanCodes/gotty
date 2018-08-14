@@ -11,7 +11,9 @@ func (server *Server) wrapLogger(handler http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		rw := &logResponseWriter{w, 200}
 		handler.ServeHTTP(rw, r)
-		log.Printf("%s %d %s %s", r.RemoteAddr, rw.status, r.Method, r.URL.Path)
+		if server.options.LogRequests {
+			log.Printf("%s %d %s %s", r.RemoteAddr, rw.status, r.Method, r.URL.Path)
+		}
 	})
 }
 
