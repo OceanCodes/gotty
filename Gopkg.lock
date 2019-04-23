@@ -2,83 +2,118 @@
 
 
 [[projects]]
+  digest = "1:0803645e1f57fb5271a6edc7570b9ea59bac2e5de67957075a43f3d74c8dbd97"
   name = "github.com/NYTimes/gziphandler"
   packages = ["."]
+  pruneopts = "UT"
   revision = "2600fb119af974220d3916a5916d6e31176aac1b"
   version = "v1.0.1"
 
 [[projects]]
+  digest = "1:b24d38b282bacf9791408a080f606370efa3d364e4b5fd9ba0f7b87786d3b679"
   name = "github.com/codegangsta/cli"
   packages = ["."]
+  pruneopts = "UT"
   revision = "cfb38830724cc34fedffe9a2a29fb54fa9169cd1"
   version = "v1.20.0"
 
 [[projects]]
+  digest = "1:f4f6279cb37479954644babd8f8ef00584ff9fa63555d2c6718c1c3517170202"
   name = "github.com/elazarl/go-bindata-assetfs"
   packages = ["."]
+  pruneopts = "UT"
   revision = "30f82fa23fd844bd5bb1e5f216db87fd77b5eb43"
   version = "v1.0.0"
 
 [[projects]]
+  digest = "1:ca82a3b99694824c627573c2a76d0e49719b4a9c02d1d85a2ac91f1c1f52ab9b"
   name = "github.com/fatih/structs"
   packages = ["."]
+  pruneopts = "UT"
   revision = "a720dfa8df582c51dee1b36feabb906bde1588bd"
   version = "v1.0"
 
 [[projects]]
+  digest = "1:43dd08a10854b2056e615d1b1d22ac94559d822e1f8b6fcc92c1a1057e85188e"
   name = "github.com/gorilla/websocket"
   packages = ["."]
+  pruneopts = "UT"
   revision = "ea4d1f681babbce9545c9c5f3d5194a789c89f5b"
   version = "v1.2.0"
 
 [[projects]]
   branch = "master"
+  digest = "1:d1971637b21871ec2033a44ca87c99c5608a7340cb34ec75fab8d2ab503276c9"
   name = "github.com/hashicorp/errwrap"
   packages = ["."]
+  pruneopts = "UT"
   revision = "d6c0cd88035724dd42e0f335ae30161c20575ecc"
 
 [[projects]]
   branch = "master"
+  digest = "1:46fb6a9f1b9667f32ac93e08b1da118b2c666991424ea12e848b05d4fe5155ef"
   name = "github.com/hashicorp/go-multierror"
   packages = ["."]
+  pruneopts = "UT"
   revision = "3d5d8f294aa03d8e98859feac328afbdf1ae0703"
 
 [[projects]]
+  digest = "1:094e04c4742b596bce4455eb535d4e4365016b44016db76f8593211406d77299"
   name = "github.com/kr/pty"
   packages = ["."]
+  pruneopts = "UT"
   revision = "fa756f09eeb418bf1cc6268c66ceaad9bb98f598"
   version = "v1.1.2"
 
 [[projects]]
+  digest = "1:40e195917a951a8bf867cd05de2a46aaf1806c50cf92eebf4c16f78cd196f747"
   name = "github.com/pkg/errors"
   packages = ["."]
+  pruneopts = "UT"
   revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
   version = "v0.8.0"
 
 [[projects]]
+  digest = "1:500c51a1dd05693529bcf287696104f585326aa371ee8d513316a981c29d9e8d"
   name = "github.com/yudai/gotty"
   packages = [
     "pkg/homedir",
     "pkg/randomstring",
     "utils",
-    "webtty"
+    "webtty",
   ]
+  pruneopts = "UT"
   revision = "a080c85cbc59226c94c6941ad8c395232d72d517"
   version = "v2.0.0-alpha.3"
 
 [[projects]]
   branch = "master"
+  digest = "1:78b90b63408aae5fc8a5114a2551cf7a923e9a1f63535389d366f0938b07e1f8"
   name = "github.com/yudai/hcl"
   packages = [
     ".",
     "hcl",
-    "json"
+    "json",
   ]
+  pruneopts = "UT"
   revision = "5fa2393b3552119bf33a69adb1402a1160cba23d"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "83c056e58bdbc2e84da26088f3939cf0077b49b88aaeef259ad058fc3b10f4df"
+  input-imports = [
+    "github.com/NYTimes/gziphandler",
+    "github.com/codegangsta/cli",
+    "github.com/elazarl/go-bindata-assetfs",
+    "github.com/fatih/structs",
+    "github.com/gorilla/websocket",
+    "github.com/kr/pty",
+    "github.com/pkg/errors",
+    "github.com/yudai/gotty/pkg/homedir",
+    "github.com/yudai/gotty/pkg/randomstring",
+    "github.com/yudai/gotty/utils",
+    "github.com/yudai/gotty/webtty",
+    "github.com/yudai/hcl",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
