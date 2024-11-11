@@ -1,4 +1,4 @@
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
     entry: "./src/main.ts",
@@ -24,6 +24,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new UglifyJSPlugin()
+        new TerserPlugin()
     ]
 };
