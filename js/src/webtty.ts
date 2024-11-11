@@ -59,8 +59,8 @@ export class WebTTY {
 
     open() {
         let connection = this.connectionFactory.create();
-        let pingTimer: number;
-        let reconnectTimeout: number;
+        let pingTimer: ReturnType<typeof setInterval>;
+        let reconnectTimeout: ReturnType<typeof setTimeout>;
 
         const setup = () => {
             connection.onOpen(() => {

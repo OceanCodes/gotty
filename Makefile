@@ -42,16 +42,16 @@ bindata/static/css/index.css: bindata/static/css resources/index.css
 bindata/static/css/xterm_customize.css: bindata/static/css resources/xterm_customize.css
 	cp resources/xterm_customize.css bindata/static/css/xterm_customize.css
 
-bindata/static/css/xterm.css: bindata/static/css js/node_modules/xterm/dist/xterm.css
-	cp js/node_modules/xterm/dist/xterm.css bindata/static/css/xterm.css
+bindata/static/css/xterm.css: bindata/static/css js/node_modules/@xterm/xterm/css/xterm.css
+	cp js/node_modules/@xterm/xterm/css/xterm.css bindata/static/css/xterm.css
 
-js/node_modules/xterm/dist/xterm.css:
+js/node_modules/@xterm/xterm/css/xterm.css:
 	cd js && \
 	npm install
 
 js/dist/gotty-bundle.js: js/src/* js/node_modules/webpack
 	cd js && \
-	`npm bin`/webpack
+	npx webpack
 
 js/node_modules/webpack:
 	cd js && \
@@ -61,7 +61,7 @@ tools:
 	go get github.com/tools/godep
 	go get github.com/mitchellh/gox
 	go get github.com/tcnksm/ghr
-	go get github.com/jteeuwen/go-bindata/...
+	go get github.com/kevinburke/go-bindata/v4/...@latest
 
 test:
 	if [ `go fmt $(go list ./... | grep -v /vendor/) | wc -l` -gt 0 ]; then echo "go fmt error"; exit 1; fi

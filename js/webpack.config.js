@@ -1,6 +1,7 @@
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
+    mode: "production",
     entry: "./src/main.ts",
     output: {
         filename: "./dist/gotty-bundle.js"
@@ -24,6 +25,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new UglifyJSPlugin()
+        new TerserPlugin()
     ]
 };
